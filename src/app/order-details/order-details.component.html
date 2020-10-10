@@ -1,0 +1,27 @@
+<div class="jumbotron my-3">
+    <a routerLink="/" class="btn btn-success mb-4">Orders Lists</a>
+  
+  <h1 class="display-4">{{ order.customerName }}</h1>
+
+  <table class="table table-dark my-4">
+    <thead>
+      <tr>
+        <th scope="col">Item Name</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of order.itemsName">
+      <tr>
+        <td>{{ item.type }}</td>
+        <td>{{ item.price }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="my-4">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Total Prices :- {{ order.totalAmount }}</li>
+      <li class="list-group-item">Shipping Address :- {{ order.address }}</li>
+    </ul>
+  </div>
+</div>

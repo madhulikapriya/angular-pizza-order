@@ -1,0 +1,68 @@
+<div class="jumbotron mt-3">
+  <h1 class="display-4">Order Lists</h1>
+  <p class="lead">diplay order lists of customers</p>
+</div>
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Order ID</th>
+      <th scope="col">Customer Name</th>
+      <th scope="col">No of Item Ordered</th>
+      <th scope="col">Total Amount</th>
+      <th scope="col">Status</th>
+      <th scope="col">Change Status</th>
+      <th scope="col">View Detail</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let order of orders">
+    <tr>
+      <th scope="row">{{ order.id }}</th>
+      <td>{{ order.customerName }}</td>
+      <td>{{ order.noOfItemOrdered }}</td>
+      <td>{{ order.totalAmount }}</td>
+      <td>{{ order.status }}</td>
+      <td>
+        <div class="dropdown">
+          <button
+            class="btn btn-warning dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Change Status
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a
+              class="dropdown-item btn"
+              (click)="changeOrderStatus(order.id, 'Order received')"
+            >
+              Order recived
+            </a>
+            <a
+              class="dropdown-item btn"
+              (click)="changeOrderStatus(order.id, 'Prearing')"
+            >
+              Preparing
+            </a>
+            <a
+              class="dropdown-item btn"
+              (click)="changeOrderStatus(order.id, 'Ready to serve')"
+            >
+              Ready to serve
+            </a>
+          </div>
+        </div>
+       
+      </td>
+      <td>
+        <button class="btn btn-primary" [routerLink]="['order', order.id]">
+          View Order
+        </button>
+      </td>
+    
+    </tr>
+  </tbody>
+</table>
